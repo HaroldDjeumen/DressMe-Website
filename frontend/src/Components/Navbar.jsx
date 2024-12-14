@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { FaBars, FaBook, FaTimes, FaUser } from "react-icons/fa";
+import {
+    FaBars,
+    FaBook,
+    FaHeart,
+    FaShoppingBag,
+    FaTimes,
+    FaUser,
+} from "react-icons/fa";
 import SearchBar from "./search-bar.jsx";
 
 function Navbar() {
@@ -18,12 +25,9 @@ function Navbar() {
     ];
 
     const navbar_items = [
-        { label: "Home", href: "#home" },
-        { label: "Browse Textbooks", href: "#shop-for-books" },
-        { label: "Sell on Booklidio", href: "#sell-books" },
-        { label: "Contact", href: "#contact" },
-        { label: "About Us", href: "#about-us" },
-        { label: <FaUser size={26} />, href: "#account" },
+        { label: <FaHeart />, href: "/" },
+        { label: <FaUser />, href: "/products" },
+        { label: <FaShoppingBag />, href: "/pages" },
     ];
 
     return (
@@ -39,9 +43,9 @@ function Navbar() {
                     {/* Desktop Menu */}
                     <SearchBar />
                     <div className="hidden md:flex items-center justify-between">
-                        {navbar_items.map((item) => (
+                        {navbar_items.map((item, index) => (
                             <a
-                                key={item.label}
+                                key={index}
                                 href={item.href}
                                 className="text-neutral-700 hover:text-[#680d28] px-3 py-2 rounded-md text-sm font-medium transition duration-300ms ease-in-out lg:text-base"
                             >
