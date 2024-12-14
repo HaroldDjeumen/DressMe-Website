@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
     FaBars,
-    FaBook,
     FaHeart,
     FaShoppingBag,
     FaTimes,
     FaUser,
 } from "react-icons/fa";
+import { GiMirrorMirror } from "react-icons/gi";
 import SearchBar from "./search-bar.jsx";
 
 function Navbar() {
@@ -31,11 +31,11 @@ function Navbar() {
     ];
 
     return (
-        <nav className="shadow-lg fixed w-full z-50">
+        <nav className="bg-white shadow-lg fixed w-full z-50">
             <div className="mx-auto px-6 lg:p-2">
                 <div className="flex justify-between p-1">
                     <span className="text-2xl font-bold text-emerald-700 p-1">
-                        <FaBook size={36} />
+                        <GiMirrorMirror size={40} />
                     </span>
                     {/* Desktop Menu */}
                     <SearchBar />
