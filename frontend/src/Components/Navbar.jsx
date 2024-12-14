@@ -25,21 +25,18 @@ function Navbar() {
     ];
 
     const navbar_items = [
-        { label: <FaHeart />, href: "/" },
-        { label: <FaUser />, href: "/products" },
-        { label: <FaShoppingBag />, href: "/pages" },
+        { label: <FaHeart size={22} />, href: "/" },
+        { label: <FaUser size={22} />, href: "/products" },
+        { label: <FaShoppingBag size={22} />, href: "/pages" },
     ];
 
     return (
-        <nav className="bg-white shadow-lg fixed w-full z-50">
-            <div className="mx-auto px-4 sm:px-6 lg:px-4">
-                <div className="flex justify-between h-16">
-                    <div className="flex-shrink-0 flex items-center">
-                        <span className="text-2xl font-bold text-[#680d28]">
-                            <FaBook size={36} />
-                        </span>
-                    </div>
-
+        <nav className="shadow-lg fixed w-full z-50">
+            <div className="mx-auto px-6 lg:p-2">
+                <div className="flex justify-between p-1">
+                    <span className="text-2xl font-bold text-emerald-700 p-1">
+                        <FaBook size={36} />
+                    </span>
                     {/* Desktop Menu */}
                     <SearchBar />
                     <div className="hidden md:flex items-center justify-between">
@@ -47,7 +44,7 @@ function Navbar() {
                             <a
                                 key={index}
                                 href={item.href}
-                                className="text-neutral-700 hover:text-[#680d28] px-3 py-2 rounded-md text-sm font-medium transition duration-300ms ease-in-out lg:text-base"
+                                className="text-neutral-700 hover:text-emerald-700 rounded-md text-sm font-medium lg:text-base lg:px-3 transition duration-300ms ease-in-out "
                             >
                                 {item.label}
                             </a>
@@ -58,7 +55,7 @@ function Navbar() {
                     <div className="md:hidden flex items-center">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-neutral-800 hover:text-[#680d28]"
+                            className="text-neutral-800 hover:text-emerald-700"
                         >
                             {isOpen ? (
                                 <FaTimes size={24} />
