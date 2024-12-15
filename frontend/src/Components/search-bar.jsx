@@ -11,7 +11,10 @@ function SearchBar() {
     };
 
     return (
-        <form onSubmit={handleSearch} className="flex lg:w-full mr-16 ml-8">
+        <form
+            onSubmit={handleSearch}
+            className="flex lg:w-full lg:mr-16 lg:ml-8"
+        >
             {/* Desktop */}
             <input
                 type="text"
@@ -26,7 +29,7 @@ function SearchBar() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Brand, style, size"
-                className="md:hidden bg-neutral-100 p-2 rounded-full outline-red-900 text-neutral-700"
+                className="md:hidden bg-neutral-100 p-2 rounded-full outline-emerald-700 text-neutral-700"
             />
             <button type="submit" className="pl-2">
                 <FaSearch

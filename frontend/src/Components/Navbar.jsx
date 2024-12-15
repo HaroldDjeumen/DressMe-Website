@@ -12,27 +12,27 @@ import SearchBar from "./search-bar.jsx";
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const navbar_items_mobile = [
-        { label: "Home", href: "#home" },
-        { label: "Shop for Books", href: "#shop-for-books" },
-        { label: "Sell on Booklidio", href: "#sell-books" },
-        { label: "Account", href: "#account" },
-        { label: "Cart", href: "#cart" },
-        { label: "FAQs", href: "#faqs" },
-        { label: "Contact", href: "#contact" },
-        { label: "About Us", href: "#about-us" },
-        { label: "Sign Up", href: "#sign-up" },
+    const navbar_items_small = [
+        { label: "Home", href: "/" },
+        { label: "Shop", href: "/shop" },
+        { label: "Account", href: "/account" },
+        { label: "Cart", href: "/cart" },
+        { label: "FAQs", href: "/faqs" },
+        { label: "Contact", href: "/contact" },
+        { label: "About Us", href: "/about-us" },
+        { label: "Wishlist", href: "/wishlist" },
+        { label: "Login / Register", href: "/sign-up" },
     ];
 
-    const navbar_items = [
-        { label: <FaHeart size={22} />, href: "/" },
-        { label: <FaUser size={22} />, href: "/products" },
-        { label: <FaShoppingBag size={22} />, href: "/pages" },
+    const navbar_items_large = [
+        { label: <FaHeart size={22} />, href: "/wishlist" },
+        { label: <FaUser size={22} />, href: "/account" },
+        { label: <FaShoppingBag size={22} />, href: "/cart" },
     ];
 
     return (
-        <nav className="bg-white shadow-lg fixed w-full z-50">
-            <div className="mx-auto px-6 lg:p-2">
+        <nav className="bg-white shadow-lg fixed z-50 w-full">
+            <div className="mx-auto px-2 lg:px-6 lg:p-2">
                 <div className="flex justify-between p-1">
                     <span className="text-2xl font-bold text-emerald-700 p-1">
                         <GiMirrorMirror size={40} />
@@ -40,7 +40,7 @@ function Navbar() {
                     {/* Desktop Menu */}
                     <SearchBar />
                     <div className="hidden md:flex items-center justify-between">
-                        {navbar_items.map((item, index) => (
+                        {navbar_items_large.map((item, index) => (
                             <a
                                 key={index}
                                 href={item.href}
@@ -52,7 +52,7 @@ function Navbar() {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
+                    <div className="md:hidden flex items-center justify-between">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-neutral-800 hover:text-emerald-700"
@@ -71,11 +71,11 @@ function Navbar() {
             {isOpen && (
                 <div className="md:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        {navbar_items_mobile.map((item) => (
+                        {navbar_items_small.map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className="text-neutral-800 hover:text-[#680d28] block px-3 py-2 rounded-md text-base font-medium no-underline"
+                                className="text-neutral-800 hover:text-emerald-700 block px-3 py-2 rounded-md text-base font-medium no-underline"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item.label}
