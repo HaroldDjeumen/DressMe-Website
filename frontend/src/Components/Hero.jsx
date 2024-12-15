@@ -14,16 +14,16 @@ const Hero = () => {
                     className="flex flex-col space-y-2 text-left md:pb-12"
                 >
                     <h1 className="text-4xl lg:text-7xl text-neutral-800 font-extrabold">
-                        Unlock Savings & Earn Cash with{" "}
-                        <span className="text-red-900">Booklidio</span>
+                        Change the way you shop online{" "}
+                        <span className="text-red-900">MirrorMe</span>
                     </h1>
-                    <p className="text-xl text-neutral-500 font-normal">
+                    {/* <p className="text-xl text-neutral-500 font-normal">
                         Stop overspending on textbooks! With Booklidio, you can
                         grab unbeatable deals on quality used books and turn
                         your old textbooks into extra cash effortlessly. Join
                         thousands of savvy students who are saving and earning
                         today!
-                    </p>
+                    </p> */}
                     <div className="flex items-center justify-center lg:justify-start pt-8 gap-6">
                         <button
                             type="button"
@@ -32,9 +32,9 @@ const Hero = () => {
                             <span className="pr-2">
                                 <FaShoppingCart color="#ffffff" size="1.5em" />
                             </span>
-                            Browse
+                            Shop
                         </button>
-                        <button
+                        {/* <button
                             type="button"
                             className="flex justify-between items-center bg-white border-2 border-red-900 rounded-lg text-red-900 font-bold text-xl px-8 py-3 hover:scale-105 hover:shadow-md hover:shadow-red-100 transition duration-300ms ease-in-out"
                         >
@@ -42,7 +42,7 @@ const Hero = () => {
                                 <FaMoneyBill size="1.5em" />
                             </span>
                             Sell Books
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 <div id="image-container">

@@ -1,47 +1,66 @@
 import * as React from "react";
-import { FaShieldAlt } from "react-icons/fa";
-import { TbTruckDelivery } from "react-icons/tb";
+import { CiCreditCard1 } from "react-icons/ci";
+import { MdSupportAgent } from "react-icons/md";
+import { TbTruckReturn } from "react-icons/tb";
+import { MdOutlineLocalShipping } from "react-icons/md";
 
 const Features = () => {
     const features = [
         {
-            figure: "70%",
+            figure: <MdOutlineLocalShipping size={40} className="text-red-900" />,
+            title: "Free Shipping",
             subtext:
-                "Save up to 70% on essential textbooks and academic resources every year.",
+                "You will love t great low prices.",
         },
         {
-            figure: <FaShieldAlt size={100} className="text-red-900" />,
+            figure: <TbTruckReturn size={40} className="text-red-900" />,
+            title: "Free Returns",
             subtext:
-                "Guaranteed quality assured textbooks with a satisfaction guarantee.",
+                "Within 15 days for anxchange.",
         },
         {
-            figure: <TbTruckDelivery size={128} className="text-red-900" />,
+            figure: <CiCreditCard1 size={50} className="text-red-900" />,
+            title: "Flexible Payment",
             subtext:
-                "Fast and secure nation-wide delivery so you get your resources on time every time",
+                "Pay with multiple credit cards",
+        },
+
+        {
+            figure: <MdSupportAgent size={50} className="text-red-900" />,
+            title: "Online Support",
+            subtext:
+                "Oustanding premiun support",
         },
     ];
     return (
         <div
             id="features-container"
-            className="bg-red-100/30 overflow-hidden pt-32 lg:pt-16 px-8 min-h-screen"
+            className=" overflow-hidden pt-32 lg:pt-16 px-2 min-h-screen"
         >
             <div className="flex flex-col space-y-2 text-center md:pb-16">
                 <h1 className="text-red-900 lg:text-5xl font-bold text-center">
                     Discover the Booklidio Difference
                 </h1>
             </div>
-            <div className="flex lg:flex-row justify-center lg:gap-5">
+            <div className="flex-col lg:grid lg:grid-cols-2 xl:flex  xl:flex-row justify-between items-center xl:gap-5">
                 {features.map((feature, index) => (
                     <div
                         key={index}
-                        className="flex lg:flex-col justify-between items-center bg-red-900/10 rounded-[16px] py-5 px-10 shadow-md shadow-red-900/20 max-w-md"
+                        className="flex sm:justify-evenly lg:flex-row justify-between items-center rounded-[16px] lg:py-5 py-3 px-10 "
                     >
-                        <span className="flex justify-center items-center text-red-900 font-bold lg:text-8xl ">
+                        <div className="p-2 lg:p-3 border-2 border-black rounded-full ">
+                        <span className="flex justify-start items-start text-red-900 font-bold lg:text-3xl">
                             {feature.figure}
                         </span>
-                        <p className="lg:pt-5 text-center text-lg leading-6 font-semibold text-neutral-900">
+                        </div>
+                        <div className="pl-1 lg:pl-3 lg:flex-col">
+                        <h2 className="text-left font-bold">
+                            {feature.title}
+                            </h2>
+                        <p className="lg:pt-2  text-left leading-6 font-normal text-neutral-900">
                             {feature.subtext}
                         </p>
+                        </div>
                     </div>
                 ))}
             </div>
