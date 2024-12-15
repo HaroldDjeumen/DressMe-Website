@@ -1,3 +1,5 @@
+import { MdOutlineLocalShipping } from "react-icons/md";
+
 const Products = () => {
     const products = [
         {
