@@ -11,23 +11,31 @@ function SearchBar() {
     };
 
     return (
-        <form onSubmit={handleSearch} className="flex items-center lg:w-1/2 ">
+        <form
+            onSubmit={handleSearch}
+            className="flex lg:w-full lg:mr-16 lg:ml-8"
+        >
+            {/* Desktop */}
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search for textbooks by title, subject, or ISBN"
-                className="hidden md:flex bg-neutral-100 p-2 rounded-full lg:min-w-full outline-red-900 text-neutral-700"
+                placeholder="Search for clothing by brand, style, or size"
+                className="hidden md:flex outline-emerald-700 rounded-full text-neutral-700 text-lg py-2 pl-6 min-w-full"
             />
+            {/* Mobile */}
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Title, subject, or ISBN"
-                className="md:hidden bg-neutral-100 p-2 rounded-full lg:min-w-full outline-red-900 text-neutral-700"
+                placeholder="Brand, style, size"
+                className="md:hidden bg-neutral-100 p-2 rounded-full outline-emerald-700 text-neutral-700"
             />
-            <button type="submit" className="ml-2">
-                <FaSearch size={22} className="text-red-900" />
+            <button type="submit" className="pl-2">
+                <FaSearch
+                    size={22}
+                    className="text-neutral-700 hover:text-emerald-700 transition duration-300ms ease-in-out"
+                />
             </button>
         </form>
     );
