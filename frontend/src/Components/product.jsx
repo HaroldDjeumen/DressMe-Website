@@ -6,3 +6,5 @@ const Products = () => {
             subtext:
                 "You will love t great low prices.",
         }]}
+
+        export default Products;

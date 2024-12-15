@@ -9,6 +9,8 @@ import Features from "../Components/features.jsx";
 import Process from "../Components/process.jsx";
 import FAQ from "../Components/faq.jsx";
 import SignUp from "../Components/signup.jsx";
+import SignUp from "../Components/signup.jsx";
+
 
 function Home() {
     return (
@@ -23,6 +25,7 @@ function Home() {
             {/* <ShopByGrade />
             <ShopBySubject /> */}
             <Footer />
+            <Products />
         </div>
     );
 }
