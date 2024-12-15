@@ -19,11 +19,9 @@ function Home() {
             <Hero />
             <Statistics />
             <Features />
-            <Process />
+            {/* <Process /> */}
             <FAQ />
             <SignUp />
-            {/* <ShopByGrade />
-            <ShopBySubject /> */}
             <Footer />
             <Products />
         </div>
