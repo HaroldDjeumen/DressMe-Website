@@ -3,6 +3,7 @@ import shirt from "../Assets/Subjects/shirt.png";
 import pants from "../Assets/Subjects/pants.png";
 import Star from "../Components/star";
 import { useState } from "react";
+import { useCart } from "../Components/CartContext"; // Import the cart hook
 
 const Products = () => {
     const [shirtProducts, setShirtProducts] = useState([]);
@@ -12,6 +13,8 @@ const Products = () => {
     const [pantsIndex, setPantsIndex] = useState(4);
 
     const [modalImage, setModalImage] = useState(null); // To display full-size image in modal
+
+    const { addToCart } = useCart(); // Access the cart function
 
     // Larger product pools
     const allShirts = [
@@ -164,14 +167,22 @@ const Products = () => {
                                 <div className="text-xl font-bold mb-4">{modalImage.price}</div>
                             </div>
                             <div>
+                               <button
+                                  className="mt-6 w-full bg-blue-600 text-white py-3 rounded text-lg font-semibold hover:bg-blue-700"
+                                       onClick={() => {
+                                           addToCart({
+                                        name: modalImage.name,
+                                        price: modalImage.price,
+                                        figure: modalImage.figure,
+                                        });
+                                    /*alert("Product added to cart!");*/
+                                        }}
+                                >
+                                    ADD TO CART
+                               </button>
+
                             <button
-                                className="mt-6 w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700"
-                                onClick={() => alert("Added to Cart!")}
-                            >
-                                ADD TO CART
-                            </button>
-                            <button
-                                className="mt-6 w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700"
+                                className="mt-6 w-full bg-blue-600 text-white py-3 rounded text-lg font-semibold hover:bg-blue-700"
                                 onClick={() => alert("Added to Model!")}
                             >
                                 ADD TO MODEL
