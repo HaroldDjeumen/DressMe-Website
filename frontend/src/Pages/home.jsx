@@ -4,7 +4,9 @@ import Hero from "../Components/hero.jsx";
 import Footer from "../Components/footer.jsx";
 import Features from "../Components/features.jsx";
 import SignUp from "../Components/signup.jsx";
-import Products from "../Components/product.jsx";
+import Products from "../Components/product-list.jsx";
+import { CartProvider } from "../Components/CartContext.jsx";
+import Cart from "../Components/Cart.jsx";
 
 
 
@@ -15,10 +17,10 @@ function Home() {
             <Navbar />
             <Hero />
             <Features />
-            <Products />
             <SignUp />
             <Footer />
             <Products />
+            <Cart />
         </div>
         </CartProvider>
     );

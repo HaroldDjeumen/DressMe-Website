@@ -3,7 +3,7 @@ import shirt from "../Assets/Subjects/shirt.png";
 import pants from "../Assets/Subjects/pants.png";
 import Star from "./star";
 import { useState } from "react";
-import { useCart } from "../Components/CartContext"; // Import the cart hook
+import { useCart } from "../Components/CartContext.jsx"; // Import the cart hook
 
 const Products = () => {
     const [shirtProducts, setShirtProducts] = useState([]);
@@ -183,7 +183,6 @@ const Products = () => {
 
                             <button
                                 className="mt-6 w-full bg-blue-600 text-white py-3 rounded text-lg font-semibold hover:bg-blue-700"
-                                onClick={() => alert("Added to Model!")}
                             >
                                 ADD TO MODEL
                             </button>
