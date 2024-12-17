@@ -9,12 +9,15 @@ import Features from "../Components/features.jsx";
 import Process from "../Components/process.jsx";
 import FAQ from "../Components/faq.jsx";
 import SignUp from "../Components/signup.jsx";
+import { CartProvider } from "../Components/CartContext";
 import Products from "../Components/product.jsx";
+import Cart from "../Components/Cart.jsx";
 
 
 
 function Home() {
     return (
+        <CartProvider>
         <div id="home-page">
             <Navbar />
             <Hero />
@@ -25,7 +28,9 @@ function Home() {
             <SignUp />
             <Footer />
             <Products />
+            <Cart />
         </div>
+        </CartProvider>
     );
 }
 
