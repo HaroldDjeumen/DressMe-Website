@@ -1,7 +1,7 @@
 import { RiStarSFill } from "react-icons/ri";
 import shirt from "../Assets/Subjects/shirt.png";
 import pants from "../Assets/Subjects/pants.png";
-import Star from "../Components/star";
+import Star from "./star";
 import { useState } from "react";
 
 const Products = () => {
