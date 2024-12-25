@@ -8,57 +8,49 @@ const Features = () => {
     const features = [
         {
             figure: (
-                <MdOutlineLocalShipping size={40} className="text-red-900" />
+                <MdOutlineLocalShipping size={40} className="text-[#465b52]" />
             ),
             title: "Free Shipping",
             subtext: "You will love the great low prices.",
         },
         {
-            figure: <TbTruckReturn size={40} className="text-red-900" />,
-            title: "Free Returns",
-            subtext: "Within 15 days for anxchange.",
-        },
-        {
-            figure: <CiCreditCard1 size={50} className="text-red-900" />,
+            figure: <CiCreditCard1 size={50} className="text-[#465b52]" />,
             title: "Flexible Payment",
             subtext: "Pay securely with multiple options.",
         },
 
         {
-            figure: <MdSupportAgent size={50} className="text-red-900" />,
+            figure: <MdSupportAgent size={50} className="text-[#465b52]" />,
             title: "Online Support",
-            subtext: "Oustanding premiun support.",
+            subtext: "Outstanding premium support.",
         },
     ];
     return (
         <div
             id="features-container"
-            className=" overflow-hidden pt-32 lg:pt-16 px-2 min-h-screen"
+            className="overflow-hidden pt-32 lg:pt-16 px-4 min-h-screen bg-gray-50"
         >
-            <div className="flex flex-col space-y-2 text-center md:pb-16">
-                <h1 className="text-red-900 lg:text-5xl font-bold text-center">
-                    Discover the Booklidio Difference
+            <div className="flex flex-col space-y-4 text-center mb-12">
+                <h1 className="text-[#465b52] text-3xl lg:text-5xl font-bold">
+                    What Makes Us Different
                 </h1>
             </div>
-            <div className="flex-col lg:grid lg:grid-cols-2 xl:flex  xl:flex-row justify-between items-center xl:gap-5">
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {features.map((feature, index) => (
                     <div
                         key={index}
-                        className="flex sm:justify-evenly lg:flex-row justify-between items-center rounded-[16px] lg:py-5 py-3 px-10 "
+                        className="flex flex-col items-center text-center bg-white shadow-md rounded-lg p-6 transition transform hover:scale-105 hover:shadow-lg"
                     >
-                        <div className="p-2 lg:p-3 border-2 border-black rounded-full ">
-                            <span className="flex justify-start items-start text-red-900 font-bold lg:text-3xl">
-                                {feature.figure}
-                            </span>
+                        <div className="p-4 border-2 border-gray-300 rounded-full mb-4">
+                            {feature.figure}
                         </div>
-                        <div className="pl-1 lg:pl-3 lg:flex-col">
-                            <h2 className="text-left font-bold">
-                                {feature.title}
-                            </h2>
-                            <p className="lg:pt-2  text-left leading-6 font-normal text-neutral-900">
-                                {feature.subtext}
-                            </p>
-                        </div>
+                        <h2 className="text-xl font-semibold text-[#465b52] mb-2">
+                            {feature.title}
+                        </h2>
+                        <p className="text-gray-600 leading-6">
+                            {feature.subtext}
+                        </p>
                     </div>
                 ))}
             </div>
