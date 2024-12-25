@@ -21,7 +21,6 @@ function Navbar() {
         { label: "Contact", href: "/contact" },
         { label: "About Us", href: "/about-us" },
         { label: "Wishlist", href: "/wishlist" },
-        { label: "Login / Register", href: "/sign-up" },
     ];
 
     const navbar_items_large = [
@@ -31,56 +30,70 @@ function Navbar() {
     ];
 
     return (
-        <nav className="bg-white shadow-lg fixed z-50 w-full">
-            <div className="mx-auto px-2 lg:px-6 lg:p-2">
-                <div className="flex justify-between p-1">
-                    <span className="text-2xl font-bold text-emerald-700 p-1">
+        <nav className="bg-[#b9c3c0] shadow-lg fixed z-50 w-full">
+            <div className="mx-auto px-4 lg:px-6">
+                <div className="flex justify-between items-center py-3">
+                    {/* Logo */}
+                    <span className="text-2xl font-bold text-[#465b52]">
                         <GiMirrorMirror size={40} />
                     </span>
+
                     {/* Desktop Menu */}
-                    <SearchBar />
-                    <div className="hidden md:flex items-center justify-between">
+                    <div className="hidden md:flex items-center gap-6">
+                        {/* Search Bar */}
+                        <div className="flex-grow pr-8">
+                            <SearchBar />
+                        </div>
                         {navbar_items_large.map((item, index) => (
                             <a
                                 key={index}
                                 href={item.href}
-                                className="text-neutral-700 hover:text-emerald-700 rounded-md text-sm font-medium lg:text-base lg:px-3 transition duration-300ms ease-in-out "
+                                className="text-neutral-700 hover:text-emerald-700 text-sm font-medium lg:text-base transition duration-300"
                             >
                                 {item.label}
                             </a>
                         ))}
+                        {/* Login Button */}
+                        <a
+                            href="/login"
+                            className="text-white bg-[#465b52] hover:bg-emerald-800 px-4 py-2 rounded-full text-sm font-medium lg:text-base transition duration-300"
+                        >
+                            Login
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center justify-between">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-neutral-800 hover:text-emerald-700"
-                        >
-                            {isOpen ? (
-                                <FaTimes size={24} />
-                            ) : (
-                                <FaBars size={24} />
-                            )}
-                        </button>
-                    </div>
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-neutral-800 hover:text-emerald-700"
+                    >
+                        {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                    </button>
                 </div>
             </div>
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div className="md:hidden bg-[#f7f9f8]">
+                    <div className="px-4 pt-4 pb-2 space-y-3">
                         {navbar_items_small.map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className="text-neutral-800 hover:text-emerald-700 block px-3 py-2 rounded-md text-base font-medium no-underline"
+                                className="block text-neutral-800 hover:text-emerald-700 py-2 px-3 rounded-md text-base font-medium"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item.label}
                             </a>
                         ))}
+                        {/* Login Button */}
+                        <a
+                            href="/login"
+                            className="block text-center text-white bg-emerald-700 hover:bg-emerald-800 px-4 py-2 rounded-full text-base font-medium transition duration-300"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Login
+                        </a>
                     </div>
                 </div>
             )}

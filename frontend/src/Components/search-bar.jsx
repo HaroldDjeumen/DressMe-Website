@@ -13,30 +13,24 @@ function SearchBar() {
     return (
         <form
             onSubmit={handleSearch}
-            className="flex lg:w-full lg:mr-16 lg:ml-8"
+            className="flex items-center w-full lg:mr-16 lg:ml-8"
         >
-            {/* Desktop */}
-            <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search for clothing by brand, style, or size"
-                className="hidden md:flex outline-emerald-700 rounded-full text-neutral-700 text-lg py-2 pl-6 min-w-full"
-            />
-            {/* Mobile */}
-            <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Brand, style, size"
-                className="md:hidden bg-neutral-100 p-2 rounded-full outline-emerald-700 text-neutral-700"
-            />
-            <button type="submit" className="pl-2">
-                <FaSearch
-                    size={22}
-                    className="text-neutral-700 hover:text-emerald-700 transition duration-300ms ease-in-out"
+            {/* Shared Input Styling */}
+            <div className="relative flex items-center w-full">
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search for clothing by brand, style, or size"
+                    className="w-full rounded-full border border-gray-300 bg-white py-2 pl-4 pr-10 text-sm md:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#465b52] transition-all duration-200 ease-in-out"
                 />
-            </button>
+                <button
+                    type="submit"
+                    className="absolute right-3 text-gray-500 hover:text-emerald-500 transition duration-300"
+                >
+                    <FaSearch size={20} />
+                </button>
+            </div>
         </form>
     );
 }

@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <div
             id="hero-container"
-            className="bg-red-100/30 overflow-hidden pt-32 lg:pt-8 pb-16 px-8 min-h-screen"
+            className="bg-[#b9c2c0] overflow-hidden pt-32 lg:pt-8 pb-16 px-8 min-h-screen"
         >
             <div className="flex flex-col lg:flex-row justify-between items-center">
                 {/* Hero Text */}
@@ -15,7 +15,7 @@ const Hero = () => {
                 >
                     <h1 className="text-4xl lg:text-7xl text-neutral-800 font-extrabold">
                         Change the way you shop online{" "}
-                        <span className="text-red-900">MirrorMe</span>
+                        <span className="text-[#465b52]">MirrorMe</span>
                     </h1>
                     {/* <p className="text-xl text-neutral-500 font-normal">
                         Stop overspending on textbooks! With Booklidio, you can
@@ -27,7 +27,7 @@ const Hero = () => {
                     <div className="flex items-center justify-center lg:justify-start pt-8 gap-6">
                         <button
                             type="button"
-                            className="flex justify-between items-center bg-red-900 rounded-lg text-white font-bold text-xl px-8 py-3  hover:scale-105 hover:shadow-md hover:shadow-red-100 transition duration-300ms ease-in-out"
+                            className="flex justify-between items-center bg-[#465b52] rounded-lg text-white font-bold text-xl px-8 py-3 hover:scale-105 hover:shadow-md hover:shadow-red-100 transition duration-300 ease-in-out"
                         >
                             <span className="pr-2">
                                 <FaShoppingCart color="#ffffff" size="1.5em" />

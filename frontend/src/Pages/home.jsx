@@ -5,8 +5,9 @@ import Footer from "../Components/footer.jsx";
 import Features from "../Components/features.jsx";
 import SignUp from "../Components/signup.jsx";
 import Products from "../Components/product-list.jsx";
-import { CartProvider } from "../Components/CartContext.jsx";
 import Cart from "../Components/Cart.jsx";
+import { CartProvider } from "../Components/CartContext.jsx";
+
 
 
 
@@ -17,9 +18,9 @@ function Home() {
             <Navbar />
             <Hero />
             <Features />
+            <Products />
             <SignUp />
             <Footer />
-            <Products />
             <Cart />
         </div>
         </CartProvider>
