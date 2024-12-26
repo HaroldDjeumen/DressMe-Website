@@ -1,52 +1,50 @@
-import * as React from "react";
-import { FaCreditCard, FaMoneyBill, FaShoppingCart } from "react-icons/fa";
+import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { GiMirrorMirror } from "react-icons/gi";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Hero = () => {
     return (
         <div
             id="hero-container"
-            className="bg-[#b9c2c0] overflow-hidden pt-32 lg:pt-8 pb-16 px-8 min-h-screen"
+            className="bg-[#b9c3c0] overflow-hidden pt-20 pb-16 px-6 lg:px-16 min-h-screen flex items-center"
         >
-            <div className="flex flex-col lg:flex-row justify-between items-center">
-                {/* Hero Text */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Hero Text Section */}
                 <div
                     id="text-elements-hero"
-                    className="flex flex-col space-y-2 text-left md:pb-12"
+                    className="flex flex-col space-y-6 lg:space-y-8 text-left"
                 >
-                    <h1 className="text-4xl lg:text-7xl text-neutral-800 font-extrabold">
-                        Change the way you shop online{" "}
-                        <span className="text-[#465b52]">MirrorMe</span>
+                    <h1 className="text-4xl lg:text-6xl text-[#465b52] font-extrabold leading-tight">
+                        Experience Shopping <br />
+                        <span className="text-[#088178]">Like Never Before</span>
                     </h1>
-                    {/* <p className="text-xl text-neutral-500 font-normal">
-                        Stop overspending on textbooks! With Booklidio, you can
-                        grab unbeatable deals on quality used books and turn
-                        your old textbooks into extra cash effortlessly. Join
-                        thousands of savvy students who are saving and earning
-                        today!
-                    </p> */}
-                    <div className="flex items-center justify-center lg:justify-start pt-8 gap-6">
+                    <p className="text-lg lg:text-xl text-gray-600 font-medium">
+                        Discover a smarter way to shop with MirrorMe. From trendy styles 
+                        to unmatched convenience, we bring the best of online shopping 
+                        directly to you. Transform your shopping journey today!
+                    </p>
+                    <div className="flex gap-4 pt-6">
+                        {/* Use Link for navigation */}
+                        <Link
+                            to="/shop" // Route to the Shop page
+                            className="flex items-center bg-[#088178] rounded-lg text-white font-bold text-lg px-8 py-3 hover:bg-[#065f5a] transition duration-300 ease-in-out"
+                        >
+                            <FaShoppingCart size="1.5em" className="mr-2" />
+                            Start Shopping
+                        </Link>
                         <button
                             type="button"
-                            className="flex justify-between items-center bg-[#465b52] rounded-lg text-white font-bold text-xl px-8 py-3 hover:scale-105 hover:shadow-md hover:shadow-red-100 transition duration-300 ease-in-out"
+                            className="flex items-center bg-[#b9c3c0] border-2 border-[#088178] rounded-lg text-[#088178] font-bold text-lg px-8 py-3 hover:bg-[#088178] hover:text-white transition duration-300 ease-in-out"
                         >
-                            <span className="pr-2">
-                                <FaShoppingCart color="#ffffff" size="1.5em" />
-                            </span>
-                            Shop
+                            Learn More
                         </button>
-                        {/* <button
-                            type="button"
-                            className="flex justify-between items-center bg-white border-2 border-red-900 rounded-lg text-red-900 font-bold text-xl px-8 py-3 hover:scale-105 hover:shadow-md hover:shadow-red-100 transition duration-300ms ease-in-out"
-                        >
-                            <span className="pr-2 text-red-900">
-                                <FaMoneyBill size="1.5em" />
-                            </span>
-                            Sell Books
-                        </button> */}
                     </div>
                 </div>
-                <div id="image-container">
-                    <img src={require("../Assets/hero.png")} alt="" />
+
+                {/* Hero Image Section */}
+                <div id="image-container" className="flex justify-center">
+                    <GiMirrorMirror />
                 </div>
             </div>
         </div>

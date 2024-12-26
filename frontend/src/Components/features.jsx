@@ -28,7 +28,7 @@ const Features = () => {
     return (
         <div
             id="features-container"
-            className="overflow-hidden pt-32 lg:pt-16 px-4 min-h-screen bg-gray-50"
+            className="overflow-hidden pt-32 lg:pt-16 px-4 py-16 bg-gray-50"
         >
             <div className="flex flex-col space-y-4 text-center mb-12">
                 <h1 className="text-[#465b52] text-3xl lg:text-5xl font-bold">
