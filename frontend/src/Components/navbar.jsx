@@ -48,7 +48,7 @@ function Navbar() {
                             <a
                                 key={index}
                                 href={item.href}
-                                className="text-neutral-700 hover:text-emerald-700 text-sm font-medium lg:text-base transition duration-300"
+                                className="text-[#465b52] hover:text-[#088178] text-sm font-medium lg:text-base transition duration-300"
                             >
                                 {item.label}
                             </a>
@@ -56,7 +56,7 @@ function Navbar() {
                         {/* Login Button */}
                         <a
                             href="/login"
-                            className="text-white bg-[#465b52] hover:bg-emerald-800 px-4 py-2 rounded-full text-sm font-medium lg:text-base transition duration-300"
+                            className="text-white bg-[#465b52] hover:bg-[#088178] px-4 py-2 rounded-full text-sm font-medium lg:text-base transition duration-300"
                         >
                             Login
                         </a>
@@ -65,7 +65,7 @@ function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-neutral-800 hover:text-emerald-700"
+                        className="md:hidden text-[#465b52] hover:text-[#088178]"
                     >
                         {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </button>
@@ -80,7 +80,7 @@ function Navbar() {
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className="block text-neutral-800 hover:text-emerald-700 py-2 px-3 rounded-md text-base font-medium"
+                                className="block text-[#465b52] hover:text-[#088178] py-2 px-3 rounded-md text-base font-medium"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item.label}
@@ -89,7 +89,7 @@ function Navbar() {
                         {/* Login Button */}
                         <a
                             href="/login"
-                            className="block text-center text-white bg-emerald-700 hover:bg-emerald-800 px-4 py-2 rounded-full text-base font-medium transition duration-300"
+                            className="block text-center text-white bg-[#465b52] hover:bg-[#088178] px-4 py-2 rounded-full text-base font-medium transition duration-300"
                             onClick={() => setIsOpen(false)}
                         >
                             Login

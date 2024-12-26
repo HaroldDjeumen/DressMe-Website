@@ -1,35 +1,34 @@
 import React from "react";
 
-const SignUp = () => {
-    return (
-        <div className="px-20 pb-20">
-            <div className="">
-                <form className="text-neutral-800 py-8 relative overflow-hidden flex flex-col gap-6 justify-around w-full border border-neutral-500 rounded-lg bg-neutral-50 p-3 px-6">
-                    <div className="before:absolute before:w-32 before:h-20 before:right-2 before:bg-red-300 before:-z-10 before:rounded-full before:blur-xl before:-top-12 z-10 after:absolute after:w-24 after:h-24 after:bg-red-200 after:-z-10 after:rounded-full after:blur after:-top-12 after:-right-6">
-                        <span className="font-extrabold text-2xl text-red-900 uppercase">
-                            Get more updates
-                        </span>
-                        <p className="text-neutral-700">
-                            Sign up for our newsletter and you'll be the first
-                            to find out about new features
-                        </p>
-                    </div>
-                    <div className="flex gap-1">
-                        <div className="relative rounded-lg w-64 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0 before:bg-red-200 before:rounded-full before:blur-lg after:absolute after:z-10 after:w-20 after:h-20 after:content[''] after:bg-red-300 after:right-12 after:top-3 after:rounded-full after:blur-lg">
-                            <input
-                                type="text"
-                                className="relative bg-transparent ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-red-900 text-sm rounded-lg focus:ring-red-900 placeholder-opacity-60 focus:border-red-500 block w-full p-2.5 checked:bg-emerald-500"
-                                placeholder="Email"
-                            />
-                        </div>
-                        <button className="bg-red-900 text-neutral-50 p-2 rounded-lg hover:bg-red-400 transition duration-300ms ease-in-out">
-                            Subscribe
-                        </button>
-                    </div>
-                </form>
-            </div>
+const Signup = () => {
+  return (
+    <section className="bg-[#b9c3c0] text-[#465b52] py-12 px-6 text-center">
+      <div className="max-w-3xl mx-auto">
+        <h4 className="text-2xl font-bold mb-4">Sign Up For Newsletters</h4>
+        <p className="text-lg font-light mb-6">
+          Get E-mail updates about our latest shop and{" "}
+          <span className="text-[#088178] font-bold">special offers</span>.
+        </p>
+        <div className="flex items-center justify-center">
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Your email address"
+              className="w-full px-6 py-3 text-gray-700  outline-none border border-[#465b52]"
+            />
+            <span className="absolute left-3 top-3.5 text-gray-400">
+              <i className="fas fa-envelope"></i>
+            </span>
+          </div>
+          <button className="bg-[#465b52] hover:bg-[#088178] text-white px-6 py-3 border border-[#465b52]  transition-all">
+            Sign Up
+          </button>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
-export default SignUp;
+export default Signup;
+
+
