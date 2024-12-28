@@ -1,98 +1,108 @@
-import productImage1 from "../Assets/Subjects/products/f2.jpg";
-import productImage2 from "../Assets/Subjects/products/f7.jpg";
+import shirt from "../Assets/Subjects/products/f2.jpg";
+import pants from "../Assets/Subjects/products/f7.jpg";
 import Star from "./star";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../Components/CartContext.jsx"; // Import the cart hook
 import banner from "../Assets/Subjects/banner/b1.jpg";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [index, setIndex] = useState(8); // Start with 8 products
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [category, setCategory] = useState("All"); // Default to show all products
     const [modalImage, setModalImage] = useState(null); // To display full-size image in modal
+
     const { addToCart } = useCart(); // Access the cart function
 
-    
-
-    // Unified product pool (shirts + pants)
     const allProducts = [
-        { figure: productImage1, name: "Nike Shirt 1", stars: <Star totalStars={5} defaultRating={3} />, price: "R400" },
-        { figure: productImage1, name: "Nike Shirt 2", stars: <Star totalStars={5} defaultRating={4} />, price: "R450" },
-        { figure: productImage1, name: "Adidas Shirt", stars: <Star totalStars={5} defaultRating={5} />, price: "R500" },
-        { figure: productImage1, name: "Puma Shirt", stars: <Star totalStars={5} defaultRating={3} />, price: "R350" },
-        { figure: productImage2, name: "Nike Pants 1", stars: <Star totalStars={5} defaultRating={4} />, price: "R600" },
-        { figure: productImage2, name: "Adidas Pants", stars: <Star totalStars={5} defaultRating={5} />, price: "R700" },
-        { figure: productImage2, name: "Puma Pants", stars: <Star totalStars={5} defaultRating={3} />, price: "R550" },
-        { figure: productImage2, name: "Reebok Pants", stars: <Star totalStars={5} defaultRating={4} />, price: "R580" },
-        { figure: productImage1, name: "Reebok Shirt", stars: <Star totalStars={5} defaultRating={4} />, price: "R480" },
-        { figure: productImage1, name: "Under Armour Shirt", stars: <Star totalStars={5} defaultRating={5} />, price: "R520" },
-        { figure: productImage2, name: "Under Armour Pants", stars: <Star totalStars={5} defaultRating={5} />, price: "R720" },
-        { figure: productImage2, name: "Champion Pants", stars: <Star totalStars={5} defaultRating={4} />, price: "R680" },
+        { type: "Shirt", figure: shirt, name: "Nike Shirt 1", stars: <Star totalStars={5} defaultRating={3} />, price: "R400" },
+        { type: "Shirt", figure: shirt, name: "Adidas Shirt", stars: <Star totalStars={5} defaultRating={5} />, price: "R500" },
+        { type: "Pants", figure: pants, name: "Nike Pants 1", stars: <Star totalStars={5} defaultRating={4} />, price: "R600" },
+        { type: "Pants", figure: pants, name: "Adidas Pants", stars: <Star totalStars={5} defaultRating={5} />, price: "R700" },
     ];
 
-    // Load More Products
-    const loadMoreProducts = () => {
-        const nextProducts = allProducts.slice(index, index + 4); // Load 4 more products
-        setProducts((prev) => [...prev, ...nextProducts]);
-        setIndex((prev) => prev + 4);
-    };
-
-    // Preload first 8 products on component mount
-    useState(() => {
-        setProducts(allProducts.slice(0, 8));
+    useEffect(() => {
+        setProducts(allProducts); // Load all products initially
+        setFilteredProducts(allProducts); // Display all products by default
     }, []);
+
+    // Filter products based on selected category
+    const handleCategoryChange = (selectedCategory) => {
+        setCategory(selectedCategory);
+        if (selectedCategory === "All") {
+            setFilteredProducts(products);
+        } else {
+            setFilteredProducts(products.filter((product) => product.type === selectedCategory));
+        }
+    };
 
     // Open and close modal
     const openModal = (product) => setModalImage(product);
     const closeModal = () => setModalImage(null);
 
     return (
-        <div className="overflow-hidden px-4 py-8 bg-[#f7f9f8]">
-            {/* Banner */}
-            <div className="w-full mb-12 flex justify-center">
-                <img
-                    src={banner}
-                    alt="Shop Banner"
-                    className="rounded-xl shadow-lg w-full max-w-full object-cover"
-                />
+        <div className="flex bg-[#f7f9f8] min-h-screen">
+            {/* Sidebar */}
+            <div className="w-1/5 p-6 mt-10 bg-[#e1e8e3] shadow-md h-screen sticky top-0">
+                <h2 className="text-lg font-bold text-[#3a403a] mb-1">Categories</h2>
+                <ul>
+                    {["All", "Shirts", "Pants","Caps","Shoes","Dress"].map((cat) => (
+                        <li key={cat} className="mb-1">
+                            <button
+                                className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
+                                    category === cat ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
+                                }`}
+                                onClick={() => handleCategoryChange(cat)}
+                            >
+                                {cat}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
-            {/* Unified Products Section */}
-            <h2 className="text-3xl font-bold text-[#3a403a] text-center mb-8">Products</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-8">
-                {products.map((feature, index) => (
-                    <div
-                        key={`product-${index}`}
-                        className="hover:bg-[#b9c3c0] min-w-[250px] p-[10px] px-[12px] border border-[#465b52] rounded-[25px] cursor-pointer shadow-lg my-[15px] transition ease-in-out duration-200 relative"
-                    >
+            {/* Main Content */}
+            <div className="flex-1 p-8">
+                {/* Banner */}
+                <div className="mb-12 mt-10">
+                    <img
+                        src={banner}
+                        alt="Shop Banner"
+                        className="rounded-xl shadow-lg w-full object-cover"
+                    />
+                </div>
+
+                {/* Products Section */}
+                <h2 className="text-3xl font-bold text-[#3a403a] text-center mb-8">
+                    {category === "All" ? "All Products" : category}
+                </h2>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredProducts.map((feature, index) => (
                         <div
-                            className="h-67 overflow-hidden mb-4 cursor-pointer"
-                            onClick={() => openModal(feature)}
+                            key={`product-${index}`}
+                            className="hover:bg-[#b9c3c0] p-4 border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg transition ease-in-out duration-200"
                         >
-                            <img
-                                src={feature.figure}
-                                alt={feature.name}
-                                className="w-full rounded-[20px]"
-                            />
-                        </div>
-                        <div className="p-2">
-                            <div className="text-lg font-semibold text-[#465b52]">
-                                {feature.name}
+                            <div
+                                className="h-60 overflow-hidden mb-4"
+                                onClick={() => openModal(feature)}
+                            >
+                                <img
+                                    src={feature.figure}
+                                    alt={feature.name}
+                                    className="w-full rounded-[15px] object-cover"
+                                />
                             </div>
-                            <div className="mb-2">{feature.stars}</div>
-                            <div className="text-xl font-bold text-[#088178]">
-                                {feature.price}
+                            <div className="p-2">
+                                <div className="text-lg font-semibold text-[#465b52]">
+                                    {feature.name}
+                                </div>
+                                <div className="mb-2">{feature.stars}</div>
+                                <div className="text-xl font-bold text-[#088178]">
+                                    {feature.price}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </div>
-            <div className="flex justify-center mb-12">
-                <button
-                    onClick={loadMoreProducts}
-                    className="px-6 py-2 bg-[#088178] text-white rounded shadow hover:bg-[#3a403a]"
-                >
-                    Load More Products
-                </button>
+                    ))}
+                </div>
             </div>
 
             {/* Full-Size Image Modal */}

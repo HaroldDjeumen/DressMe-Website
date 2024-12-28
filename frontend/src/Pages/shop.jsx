@@ -1,6 +1,6 @@
-import Products from "../Components/product-list.jsx";
-import Navbar from "../Components/navbar.jsx"; 
-import { CartProvider } from "../Components/CartContext.jsx"; 
+import Products from "../Components/product-shop.jsx";
+import Navbar from "../Components/navbar.jsx";
+import { CartProvider } from "../Components/CartContext.jsx";
 
 function Shop() {
     return (
