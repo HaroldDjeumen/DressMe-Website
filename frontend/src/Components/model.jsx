@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IoBody } from "react-icons/io5";
 import ReactDOM from "react-dom";
+import './model.css'; // Importing CSS for styling
+
 
 const Model = () => {
     const [showPopup, setShowPopup] = useState(false);
