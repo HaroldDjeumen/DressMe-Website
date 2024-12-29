@@ -15,11 +15,6 @@ const Footer = () => {
       <footer className="flex flex-wrap justify-between p-8 bg-nautral-100">
         {/* Contact Section */}
         <div className="col flex flex-col mb-6">
-          <img
-            className="w-20 mb-4"
-            src="logo/logogreensmall.png"
-            alt="Logo"
-          />
           <h4 className="font-bold text-sm mb-2">Contact</h4>
           <p className="text-xs">
             <strong>Address: </strong>

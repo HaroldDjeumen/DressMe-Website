@@ -6,18 +6,21 @@ import Features from "../Components/features.jsx";
 import SignUp from "../Components/signup.jsx";
 import Products from "../Components/product-list.jsx";
 import { CartProvider } from "../Components/CartContext.jsx";
+import Model from "../Components/model.jsx";
+import Creator from "../Components/explorecreator.jsx";
 
 function Home() {
     return (
         <CartProvider>
+            <Model />
             <div id="home-page">
                 <Navbar />
                 <Hero />
-                <Features />
-                {/* Display Products Once */}
                 <Products />
+                <Features />
                 <SignUp />
                 <Footer />
+                <Creator/>
             </div>
         </CartProvider>
     );
