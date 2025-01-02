@@ -13,7 +13,7 @@
 }
 
 .popup {
-    background-color: #465b52;
+    background-color: #465b52; /* Keeping this color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     text-align: center;
