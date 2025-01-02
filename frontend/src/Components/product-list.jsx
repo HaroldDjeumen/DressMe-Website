@@ -62,7 +62,7 @@ const Products = () => {
                 {products.map((feature, index) => (
                     <div
                         key={`product-${index}`}
-                        className="hover:bg-[#b9c3c0] min-w-[250px] p-[10px] px-[12px] border border-[#465b52] rounded-[25px] cursor-pointer shadow-lg my-[15px] transition ease-in-out duration-200 relative"
+                        className="hover:bg-[#b9c3c0] min-w-[200px] p-[8px] px-[10px] border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg my-[10px] transition ease-in-out duration-200 relative"
                     >
                         <div
                             className="h-67 overflow-hidden mb-4 cursor-pointer"
