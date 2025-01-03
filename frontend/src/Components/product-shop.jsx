@@ -13,6 +13,8 @@ const Products = () => {
     const [priceRange, setPriceRange] = useState([0, 2000]); // Price filter
     const [minStars, setMinStars] = useState(0); // Star rating filter
     const [modalImage, setModalImage] = useState(null); // To display full-size image in modal
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+    const [showFilters, setShowFilters] = useState(false); // Toggle for mobile filters
 
     const { addToCart } = useCart(); // Access the cart function
 
@@ -21,25 +23,20 @@ const Products = () => {
         { type: "Shirts", figure: shirt, name: "Adidas Shirt", brand: "Adidas", stars: 5, price: 500 },
         { type: "Pants", figure: pants, name: "Nike Pants 1", brand: "Nike", stars: 4, price: 600 },
         { type: "Pants", figure: pants, name: "Adidas Pants", brand: "Adidas", stars: 5, price: 700 },
-        { type: "Pants", figure: pants, name: "Puma Pants", brand: "Puma", stars: 3, price: 550 },
-        { type: "Pants", figure: pants, name: "Reebok Pants", brand: "Reebok", stars: 4, price: 580 },
-        { type: "Shirts", figure: shirt, name: "Nike Shirt 1", brand: "Nike", stars: 3, price: 400 },
-        { type: "Shirts", figure: shirt, name: "Adidas Shirt", brand: "Adidas", stars: 5, price: 500 },
-        { type: "Pants", figure: pants, name: "Nike Pants 1", brand: "Nike", stars: 4, price: 600 },
-        { type: "Pants", figure: pants, name: "Adidas Pants", brand: "Adidas", stars: 5, price: 700 },
-        { type: "Pants", figure: pants, name: "Puma Pants", brand: "Puma", stars: 3, price: 550 },
-        { type: "Pants", figure: pants, name: "Reebok Pants", brand: "Reebok", stars: 4, price: 580 },
-        { type: "Shirts", figure: shirt, name: "Nike Shirt 1", brand: "Nike", stars: 3, price: 400 },
-        { type: "Shirts", figure: shirt, name: "Adidas Shirt", brand: "Adidas", stars: 5, price: 500 },
-        { type: "Pants", figure: pants, name: "Nike Pants 1", brand: "Nike", stars: 4, price: 600 },
-        { type: "Pants", figure: pants, name: "Adidas Pants", brand: "Adidas", stars: 5, price: 700 },
-        { type: "Pants", figure: pants, name: "Puma Pants", brand: "Puma", stars: 3, price: 550 },
-        { type: "Pants", figure: pants, name: "Reebok Pants", brand: "Reebok", stars: 4, price: 580 },
+        
+        
+        
     ];
 
     useEffect(() => {
         setProducts(allProducts);
         setFilteredProducts(allProducts);
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     // Filter products based on category, brand, price, and stars
@@ -62,80 +59,95 @@ const Products = () => {
     const openModal = (product) => setModalImage(product);
     const closeModal = () => setModalImage(null);
 
+    // Open and close filter popup
+    const openFilterPopup = () => setShowFilters(true);
+    const closeFilterPopup = () => setShowFilters(false);
+
     return (
         <div className="flex bg-[#f7f9f8] min-h-screen">
-            {/* Sidebar */}
-            <div className="w-1/5 p-6 mt-10 bg-[#e1e8e3] shadow-md h-screen sticky top-0">
-                <h2 className="text-lg font-bold text-[#3a403a] mb-4">Filters</h2>
+            {/* Sidebar or Filter Button */}
+            {isMobile ? (
+    <div className="fixed bottom-4 left-4 z-50">
+        <button
+            className="bg-[#088178] text-white px-4 py-2 rounded-full shadow-lg"
+            onClick={openFilterPopup}
+        >
+            Filters
+        </button>
+    </div>
+) : (
+    <div className="w-1/5 p-6 mt-10 bg-[#e1e8e3] shadow-md h-screen sticky top-0">
+        <h2 className="text-lg font-bold text-[#3a403a] mb-4">Filters</h2>
 
-                {/* Categories */}
-                <div className="mb-6">
-                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Categories</h3>
-                    <ul>
-                        {["All", "Shirts", "Pants"].map((cat) => (
-                            <li key={cat}>
-                                <button
-                                    className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
-                                        category === cat ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
-                                    }`}
-                                    onClick={() => setCategory(cat)}
-                                >
-                                    {cat}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                    {/* Categories */}
+                    <div className="mb-6">
+                        <h3 className="text-md font-semibold text-[#3a403a] mb-2">Categories</h3>
+                        <ul>
+                            {["All", "Shirts", "Pants"].map((cat) => (
+                                <li key={cat}>
+                                    <button
+                                        className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
+                                            category === cat ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
+                                        }`}
+                                        onClick={() => setCategory(cat)}
+                                    >
+                                        {cat}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                {/* Shop by Brand */}
-                <div className="mb-6">
-                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Shop by Brand</h3>
-                    <ul>
-                        {["All", "Nike", "Adidas", "Puma", "Reebok"].map((brand) => (
-                            <li key={brand}>
-                                <button
-                                    className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
-                                        selectedBrand === brand ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
-                                    }`}
-                                    onClick={() => setSelectedBrand(brand)}
-                                >
-                                    {brand}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                    {/* Shop by Brand */}
+                    <div className="mb-6">
+                        <h3 className="text-md font-semibold text-[#3a403a] mb-2">Shop by Brand</h3>
+                        <ul>
+                            {["All", "Nike", "Adidas", "Puma", "Reebok"].map((brand) => (
+                                <li key={brand}>
+                                    <button
+                                        className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
+                                            selectedBrand === brand ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
+                                        }`}
+                                        onClick={() => setSelectedBrand(brand)}
+                                    >
+                                        {brand}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                {/* Price Range */}
-                <div className="mb-6">
-                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Price Range</h3>
-                    <input
-                        type="range"
-                        min="0"
-                        max="2000"
-                        value={priceRange[1]}
-                        onChange={(e) => setPriceRange([0, Number(e.target.value)])}
-                        className="w-full color-[#465b52]"
-                    />
-                    <p className="text-sm text-[#465b52] mt-2">Up to R{priceRange[1]}</p>
-                </div>
+                    {/* Price Range */}
+                    <div className="mb-6">
+                        <h3 className="text-md font-semibold text-[#3a403a] mb-2">Price Range</h3>
+                        <input
+                            type="range"
+                            min="0"
+                            max="2000"
+                            value={priceRange[1]}
+                            onChange={(e) => setPriceRange([0, Number(e.target.value)])}
+                            className="w-full color-[#465b52]"
+                        />
+                        <p className="text-sm text-[#465b52] mt-2">Up to R{priceRange[1]}</p>
+                    </div>
 
-                {/* Star Rating */}
-                <div className="mb-6">
-                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Star Rating</h3>
-                    <select
-                        value={minStars}
-                        onChange={(e) => setMinStars(Number(e.target.value))}
-                        className="w-full text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg bg-[#f7f9f8] border border-[#465b52]"
-                    >
-                        {[0, 1, 2, 3, 4, 5].map((star) => (
-                            <option key={star} value={star}>
-                                {star} Stars & Up
-                            </option>
-                        ))}
-                    </select>
+                    {/* Star Rating */}
+                    <div className="mb-6">
+                        <h3 className="text-md font-semibold text-[#3a403a] mb-2">Star Rating</h3>
+                        <select
+                            value={minStars}
+                            onChange={(e) => setMinStars(Number(e.target.value))}
+                            className="w-full text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg bg-[#f7f9f8] border border-[#465b52]"
+                        >
+                            {[0, 1, 2, 3, 4, 5].map((star) => (
+                                <option key={star} value={star}>
+                                    {star} Stars & Up
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Main Content */}
             <div className="flex-1 p-8">
@@ -152,14 +164,14 @@ const Products = () => {
                 <h2 className="text-3xl font-bold text-[#3a403a] text-center mb-8">
                     {category === "All" ? "All Products" : category}
                 </h2>
-<div className="grid gap-6 grid-cols-2 md:grid-cols-3">
+                <div className="grid gap-6 grid-cols-2 md:grid-cols-3">
                     {filteredProducts.map((feature, index) => (
                         <div
                             key={`product-${index}`}
-                            className="hover:bg-[#b9c3c0] p-4 border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg transition ease-in-out duration-200"
+                            className="hover:bg-[#b9c3c0] lg-min-w-[250px] md-min-w-[150px] lg-py-[12px] md-py-[9px] lg-px-[10px] md-px-[7px] lg-w-[23%] md-w-[15%] border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg my-[10px] transition ease-in-out duration-200 relative"
                         >
                             <div
-                                className="h-67 overflow-hidden mb-4"
+                                className="h-67 overflow-hidden mb-4 cursor-pointer"
                                 onClick={() => openModal(feature)}
                             >
                                 <img
@@ -171,9 +183,6 @@ const Products = () => {
                             <div className="p-2">
                                 <div className="text-lg font-semibold text-[#465b52]">
                                     {feature.name}
-                                </div>
-                                <div className="mb-2">
-                                    <Star totalStars={5} defaultRating={feature.stars} />
                                 </div>
                                 <div className="text-xl font-bold text-[#088178]">
                                     R{feature.price}
@@ -262,8 +271,104 @@ const Products = () => {
                     </div>
                 </div>
             )}
+
+            {/* Filter Popup for Mobile */}
+            
+    {showFilters && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white w-11/12 max-w-lg rounded-lg shadow-lg p-6 relative">
+                <h2 className="text-xl font-bold text-[#3a403a] mb-4">Filters</h2>
+    
+                {/* Categories */}
+                <div className="mb-6">
+                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Categories</h3>
+                    <ul>
+                        {["All", "Shirts", "Pants"].map((cat) => (
+                            <li key={cat}>
+                                <button
+                                    className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
+                                        category === cat ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
+                                    }`}
+                                    onClick={() => setCategory(cat)}
+                                >
+                                    {cat}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+    
+                {/* Shop by Brand */}
+                <div className="mb-6">
+                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Shop by Brand</h3>
+                    <ul>
+                        {["All", "Nike", "Adidas", "Puma", "Reebok"].map((brand) => (
+                            <li key={brand}>
+                                <button
+                                    className={`w-full text-left text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg ${
+                                        selectedBrand === brand ? "bg-[#088178] text-white" : "hover:bg-[#b9c3c0]"
+                                    }`}
+                                    onClick={() => setSelectedBrand(brand)}
+                                >
+                                    {brand}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+    
+                {/* Price Range */}
+                <div className="mb-6">
+                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Price Range</h3>
+                    <input
+                        type="range"
+                        min="0"
+                        max="2000"
+                        value={priceRange[1]}
+                        onChange={(e) => setPriceRange([0, Number(e.target.value)])}
+                        className="w-full color-[#465b52]"
+                    />
+                    <p className="text-sm text-[#465b52] mt-2">Up to R{priceRange[1]}</p>
+                </div>
+    
+                {/* Star Rating */}
+                <div className="mb-6">
+                    <h3 className="text-md font-semibold text-[#3a403a] mb-2">Star Rating</h3>
+                    <select
+                        value={minStars}
+                        onChange={(e) => setMinStars(Number(e.target.value))}
+                        className="w-full text-sm font-medium text-[#465b52] py-2 px-4 rounded-lg bg-[#f7f9f8] border border-[#465b52]"
+                    >
+                        {[0, 1, 2, 3, 4, 5].map((star) => (
+                            <option key={star} value={star}>
+                                {star} Stars & Up
+                            </option>
+                        ))}
+                    </select>
+                </div>
+    
+                {/* Apply and Close Buttons */}
+                <div className="flex justify-end gap-4">
+                    <button
+                        className="bg-[#088178] text-white py-2 px-4 rounded hover:bg-[#3a403a]"
+                        onClick={() => {
+                            applyFilters();
+                            closeFilterPopup();
+                        }}
+                    >
+                        Apply
+                    </button>
+                    <button
+                        className="bg-[#b9c3c0] text-[#3a403a] py-2 px-4 rounded hover:bg-[#465b52]"
+                        onClick={closeFilterPopup}
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
-    );
-};
+    )}
+    </div>
+)}
 
 export default Products;

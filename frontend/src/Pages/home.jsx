@@ -12,7 +12,6 @@ import Creator from "../Components/explorecreator.jsx";
 function Home() {
     return (
         <CartProvider>
-            <Model />
             <div id="home-page">
                 <Navbar />
                 <Hero />
@@ -20,7 +19,6 @@ function Home() {
                 <Features />
                 <SignUp />
                 <Footer />
-                <Creator/>
             </div>
         </CartProvider>
     );

@@ -1,28 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IoBody } from "react-icons/io5";
 import ReactDOM from "react-dom";
 import './model.css'; // Importing CSS for styling
-
 
 const Model = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [isDragging, setIsDragging] = useState(false);
 
-    const handleMouseDown = (e) => {
+    const circleRef = useRef(null); // Ref for the circle element
+    const popupRef = useRef(null); // Ref for the popup element
+
+    const startDrag = (e) => {
         setIsDragging(true);
+        circleRef.current.startX = e.clientX - position.x;
+        circleRef.current.startY = e.clientY - position.y;
     };
 
-    const handleMouseMove = (e) => {
-        if (isDragging) {
-            setPosition({
-                x: e.clientX - 25, // Center the circle
-                y: e.clientY - 25,
-            });
+    const onDrag = (e) => {
+        if (!isDragging) return;
+
+        const newX = e.clientX - circleRef.current.startX;
+        const newY = e.clientY - circleRef.current.startY;
+
+        // Update position directly without triggering re-renders
+        if (circleRef.current) {
+            circleRef.current.style.left = `${newX}px`;
+            circleRef.current.style.top = `${newY}px`;
+        }
+
+        if (popupRef.current) {
+            popupRef.current.style.top = `${newY}px`;
         }
     };
 
-    const handleMouseUp = () => {
+    const stopDrag = () => {
+        if (isDragging && circleRef.current) {
+            // Finalize the position in state to keep it consistent
+            setPosition({
+                x: parseFloat(circleRef.current.style.left),
+                y: parseFloat(circleRef.current.style.top),
+            });
+        }
         setIsDragging(false);
     };
 
@@ -53,18 +72,19 @@ const Model = () => {
                 width: "100vw",
                 pointerEvents: "none", // This ensures we don't block other UI elements
             }}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp} // Stop dragging when leaving the screen
+            onMouseMove={onDrag}
+            onMouseUp={stopDrag}
+            onMouseLeave={stopDrag} // Stop dragging when leaving the screen
         >
             {/* Circle */}
             <div
+                ref={circleRef}
                 onClick={() => setShowPopup(!showPopup)} // Toggle popup on circle click
-                onMouseDown={handleMouseDown}
+                onMouseDown={startDrag}
                 style={{
                     position: "fixed", // Use absolute positioning
-                    left: position.x,
-                    top: position.y,
+                    left: `${position.x}px`,
+                    top: `${position.y}px`,
                     width: "45px",
                     height: "45px",
                     borderRadius: "50%",
@@ -85,9 +105,10 @@ const Model = () => {
             {/* Popup */}
             {showPopup && (
                 <div
+                    ref={popupRef}
                     style={{
                         position: "fixed", // Position the popup relative to the viewport
-                        top: position.y,
+                        top: `${position.y}px`,
                         transform: "translateY(-50%)",
                         width: "300px",
                         padding: "20px",

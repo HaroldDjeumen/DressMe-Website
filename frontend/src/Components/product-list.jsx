@@ -58,11 +58,11 @@ const Products = () => {
 
             {/* Unified Products Section */}
             <h2 className="text-3xl font-bold text-[#3a403a] text-center mb-8">Products</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-8">
+            <div className="grid gap-6 grid-cols-2 md:grid-cols-3">
                 {products.map((feature, index) => (
                     <div
                         key={`product-${index}`}
-                        className="hover:bg-[#b9c3c0] min-w-[200px] p-[8px] px-[10px] border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg my-[10px] transition ease-in-out duration-200 relative"
+                        className="hover:bg-[#b9c3c0] lg-min-w-[250px] md-min-w-[150px] lg-py-[12px] md-py-[9px] lg-px-[10px] md-px-[7px] lg-w-[23%] md-w-[15%] border border-[#465b52] rounded-[20px] cursor-pointer shadow-lg my-[10px] transition ease-in-out duration-200 relative"
                     >
                         <div
                             className="h-67 overflow-hidden mb-4 cursor-pointer"
