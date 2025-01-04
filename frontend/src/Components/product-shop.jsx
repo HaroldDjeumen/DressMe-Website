@@ -13,7 +13,7 @@ const Products = () => {
     const [priceRange, setPriceRange] = useState([0, 2000]); // Price filter
     const [minStars, setMinStars] = useState(0); // Star rating filter
     const [modalImage, setModalImage] = useState(null); // To display full-size image in modal
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
     const [showFilters, setShowFilters] = useState(false); // Toggle for mobile filters
 
     const { addToCart } = useCart(); // Access the cart function
@@ -34,7 +34,7 @@ const Products = () => {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 950);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
