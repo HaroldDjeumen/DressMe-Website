@@ -23,6 +23,21 @@ const Products = () => {
         { type: "Shirts", figure: shirt, name: "Adidas Shirt", brand: "Adidas", stars: 5, price: 500 },
         { type: "Pants", figure: pants, name: "Nike Pants 1", brand: "Nike", stars: 4, price: 600 },
         { type: "Pants", figure: pants, name: "Adidas Pants", brand: "Adidas", stars: 5, price: 700 },
+        { type: "Shirts", figure: shirt, name: "Nike Shirt 1", brand: "Nike", stars: 3, price: 400 },
+    { type: "Shirts", figure: shirt, name: "Adidas Shirt 2", brand: "Adidas", stars: 4, price: 450 },
+    { type: "Shirts", figure: shirt, name: "Puma Shirt 3", brand: "Puma", stars: 5, price: 500 },
+    { type: "Pants", figure: pants, name: "Levi's Jeans", brand: "Levi's", stars: 5, price: 1200 },
+    { type: "Pants", figure: pants, name: "H&M Chinos", brand: "H&M", stars: 4, price: 800 },
+    { type: "Pants", figure: pants, name: "Zara Joggers", brand: "Zara", stars: 3, price: 700 },
+    { type: "Shoes", figure: pants, name: "Nike Air Max", brand: "Nike", stars: 5, price: 3000 },
+    { type: "Shoes", figure: pants, name: "Adidas Ultraboost", brand: "Adidas", stars: 4, price: 2800 },
+    { type: "Shoes", figure: pants, name: "Puma Running Shoes", brand: "Puma", stars: 4, price: 2600 },
+    { type: "Hats", figure: shirt, name: "New Era Cap", brand: "New Era", stars: 5, price: 300 },
+    { type: "Hats", figure: shirt, name: "Adidas Beanie", brand: "Adidas", stars: 4, price: 250 },
+    { type: "Hats", figure: shirt, name: "Nike Sports Cap", brand: "Nike", stars: 3, price: 350 },
+    { type: "Jackets", figure: shirt, name: "North Face Parka", brand: "The North Face", stars: 5, price: 5000 },
+    { type: "Jackets", figure: shirt, name: "Columbia Windbreaker", brand: "Columbia", stars: 4, price: 3000 },
+    { type: "Jackets", figure: shirt, name: "H&M Leather Jacket", brand: "H&M", stars: 4, price: 3500 }
         
         
         
