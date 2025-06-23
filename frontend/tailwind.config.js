@@ -1,6 +1,6 @@
-const { tailwindConfig } = require("@storefront-ui/react/tailwind-config");
+import { tailwindConfig } from "@storefront-ui/react/tailwind-config";
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     presets: [tailwindConfig],
     content: [
         "./app/**/*.{js,ts,jsx,tsx}",
